@@ -1,0 +1,6 @@
+include ':demoplugin'
+include ':hippiusmoduledemo'
+include ':speedatauhfrfid'
+include ':app'
+include ':jlhmprinter'
+//':messages', ':applications', ':contacts', ':baselibrary', ':pushlibrary', ':mainlibrary', ':loginbaselibrary', ':logineipalibrary', ':pluginlibrary', ':react_native', ':zxing', ':voicerecbridge',':locationbridge', ':HIMKit', ':RongIMLib', ':NetEaseIMLib',':zbar',':doodle',':runtime', ':loginmicrosoft', ':HIMLib', ':SSLhandler', ':SimpleApplication'

@@ -1,0 +1,25 @@
+ext{
+    isIntegration = true //是否为集成模式
+    android = [
+            compileSdkVersion: 28,
+            minSdkVersion    : 19,
+            targetSdkVersion : 28,
+    ]
+
+    libVersion = [
+            rxandroid       :'2.1.0',
+            rxjava          :'2.2.1',
+            adapter_rxjava  :'2.4.0',
+            retrofit        :'2.4.0',
+            converter_gson  :'2.4.0',
+            arouter_api     :'1.4.0',
+            arouter_compiler:'1.2.1',
+            butterknife     :'10.2.1'
+    ]
+
+    template = [
+            login           :':logineipalibrary'
+    ]
+
+
+}

@@ -1,0 +1,84 @@
+{
+  "pageCode": "HippiusDemo",
+  "pageType": "function",
+  "pageSort": "native",
+  "pageName": "Demo模版",
+  "params": {
+    "rows": [
+      {
+        "defaultValue": "测试字符串1的默认值",
+        "paramJson": "{\"length\":3}",
+        "keyName": "Demo字符串1",
+        "type": "input",
+        "key": "hippiusmoduledemo_str1",
+        "required": "Y",
+        "desc": "请输入测试字符串1"
+      },
+      {
+        "defaultValue": "测试字符串2的默认值",
+        "paramJson": "{}",
+        "keyName": "Demo字符串2",
+        "type": "input",
+        "key": "hippiusmoduledemo_str2",
+        "required": "Y",
+        "desc": "请输入测试字符串2"
+      },
+      {
+        "defaultValue": "#FFFFFF",
+        "paramJson": "{}",
+        "keyName": "Demo颜色1",
+        "type": "colorPicker",
+        "key": "hippiusmoduledemo_color1",
+        "required": "Y",
+        "desc": "Demo颜色1"
+      },
+      {
+        "defaultValue": "#FF0000",
+        "paramJson": "{}",
+        "keyName": "Demo颜色2",
+        "type": "colorPicker",
+        "key": "hippiusmoduledemo_color2",
+        "required": "Y",
+        "desc": "Demo颜色1"
+      },
+      {
+        "defaultValue": null,
+        "paramJson": "{\"requiredType\":[\"png\",\"jpng\"],\"size\":{\"height\":100,\"width\":300}}",
+        "keyName": "示例图片1",
+        "type": "uploadImage",
+        "key": "demo_img_1",
+        "required": "Y",
+        "desc": "推荐尺寸 300*100"
+      },
+      {
+        "defaultValue": "[]",
+        "paramJson": "[{\"label\":\"区域1\",\"value\":\"area1\"},{\"label\":\"区域2\",\"value\":\"area2\"},{\"label\":\"区域3\",\"value\":\"area3\"}]",
+        "keyName": "显示区域选择",
+        "type": "checkbox",
+        "key": "hippiusmoduledemo_checkbox_area",
+        "required": "Y"
+      },
+      {
+        "defaultValue": "area1",
+        "paramJson": "[{\"label\":\"区域1\",\"value\":\"area1\"},{\"label\":\"区域2\",\"value\":\"area2\"},{\"label\":\"区域3\",\"value\":\"area3\"}]",
+        "keyName": "显示区域单选",
+        "type": "radio",
+        "key": "hippiusmoduledemo_radio_area",
+        "required": "Y"
+      },
+      {
+        "paramJson": "{\"length\":50}",
+        "keyName": "长文本示例",
+        "type": "textarea",
+        "key": "hippiusmoduledemo_textarea1",
+        "required": "Y",
+        "desc": "请输入（1-50汉字）"
+      }
+    ]
+  },
+  "extra": {
+    "AndroidLibrary": ":hippiusmoduledemo",
+    "AndroidLibVersion": "1.0.0",
+    "AndroidRoute": "/hippiusmoduledemo/demofragment"
+  }
+}

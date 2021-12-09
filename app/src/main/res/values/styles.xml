@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/main_color</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/main_splash_bg</item>
+    </style>
+    <!--<style name="FullscreenTheme" parent="AppTheme.NoActionBar">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        &lt;!&ndash;windowTranslucentNavigation这个属性设置成true，则navigationBarColor设置会失效&ndash;&gt;
+        &lt;!&ndash;<item name="android:windowTranslucentNavigation">true</item>&ndash;&gt;
+        &lt;!&ndash;<item name="android:windowTranslucentStatus">true</item>&ndash;&gt;
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>-->
+</resources>

@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script type="application/javascript">
+        console.log(navigator.userAgent)
+        if(navigator.userAgent.indexOf("DarkMode/Y")!=-1){
+           // disableDarkLayer();
+            console.log("暗黑模式");
+        }else{
+            console.log("非暗黑模式");
+        }
+
+        var onTenantChanged = function(message){
+            var object = JSON.parse(message);
+            console.log(object.tenantId,object.tenantName)
+        }
+
+        var options = {
+                callBack:"onTenantChanged"
+         }
+        var arguments = {
+            className:"BaseBridge",
+            function:"setTenantChangeListener",
+            params:options,
+            successCallBack:"onSuccess",
+            failCallBack:"onError"
+        }
+        HandBridge.postMessage(JSON.stringify(arguments));
+
+        function disableDarkLayer(){
+            var options = {
+                "disableDarkLayer":"Y"
+            }
+            var arguments = {
+                className:"BaseBridge",
+                params:options,
+                function:"setConfig",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+        function closeWebView(){
+            console.log(navigator.userAgent);
+            alert("111");
+            var arguments = {
+                className:"BaseBridge",
+                function:"closeWebView",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        var onSuccess = function(message){
+          //  alert(message);
+          console.log(message);
+          //console.log("======================");
+           var object = JSON.parse(message);
+            console.log(object);
+            var argsExtra = object.argsExtra;
+            console.log(argsExtra.orderName);
+            //var argsObject = JSON.parse(decodeURIComponent(argsExtra));
+            //console.log(argsObject);
+           // getFileEntry(message);
+           // console.log(message);
+        }
+
+        function getFileEntry(imageUrl){
+            alert("123");
+            window.resolveLocalFileSystemURL(imgUri, function success(fileEntry) {
+                console.log("got file: " + fileEntry.fullPath);
+                console.log('cdvfile URI: ' + fileEntry.toInternalURL());
+                alert(fileEntry.toInternalURL());
+            });
+        }
+
+        var onError = function(message){
+            alert(message);
+        }
+
+        function base64ToImage(){
+
+            var options = {
+                base64Image:"xxxxxxxxx"
+            }
+            var arguments = {
+                className:"FileBridge",
+                function:"base64ToImage",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+
+
+        function photos(){
+            alert("相册");
+             var options = {
+                maxImages:9
+            }
+            var arguments = {
+                className:"CameraBridge",
+                function:"getPicture",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function office(){
+            alert("4");
+            HandBridge.invoke("OfficePlugin","123","{}","onSuccess","onError");
+        }
+
+        function scan(){
+            alert("scan");
+            var arguments = {
+                className:"ScanBridge",
+                function:"scanner",
+                params:{
+                    "isBoxScan":true,
+                },
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function getBaseInfo(){
+            alert("getBaseInfo");
+            var arguments = {
+                className:"BaseBridge",
+                function:"getBaseInfo",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function openNativeContact(){
+            alert("openNativeContact");
+            var arguments = {
+                className:"ContactBridge",
+                function:"openNativeContact",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function previewOffice(){
+            alert("previewOffice");
+            var options = {
+                "url":"/data/user/0/com.hand.hippius/files/getFile.pdf"
+            }
+            var arguments = {
+                className:"OfficeBridge",
+                function:"open",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+
+        function share(){
+            alert("share");
+            var options = {
+                "title":"BAIDU",
+                "summary":"THIS IS A TEST MESSAGE!",
+                "redirectUrl":"http://www.baidu.com",
+                "image":"https://www.baidu.com/img/bd_logo1.png?where=super"
+            }
+            var arguments = {
+                className:"ShareBridge",
+                function:"share",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function getLocation(){
+            alert("location")
+            var options = {
+                platform:"gaode"
+            }
+            var arguments = {
+                className:"LocationBridge",
+                function:"location",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function getLocation2(){
+            alert("location")
+            var arguments = {
+                className:"LocationBridge",
+                function:"location",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function getSerLocation(){
+            alert("getSerLocation")
+            var options = {
+                "platform":"gaode",
+                "onceLocation":"N",
+                "interval":2000
+            }
+            var arguments = {
+                className:"ADLocationBridge",
+                function:"location",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function stopSerLocation(){
+            alert("stopLocation");
+            var arguments = {
+                className:"ADLocationBridge",
+                function:"stopLocation",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function uploadFile(){
+            alert("uploadFile")
+            var options = {
+                "source":"/storage/emulated/0/Android/data/com.hand.hippiusRC/cache/1573439973528.jpg",
+                "target":"http://hippiusdevb.hand-china.com:21190/hfle/v1/files/multipart?bucketName=hippius-iam",
+                "fileKey":"file",
+                "mimeType":"image/jpg",
+                "fileName":"Screenshot_2019-04-11-20-02-48.jpg",
+                "headers.Authorization":{
+                    "Authorization":"bearer 9d9929dd-b1c6-44b9-9421-17f078f1ea8f"
+                }
+            }
+            var arguments = {
+                className:"FileBridge",
+                function:"upload",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function downloadFile(){
+
+            var options = {
+                "source":"http://222.191.249.10:9999/ct_uat/r/api/sys/attach/file/detail/void?fileId=2825&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXJlc291cmNlIl0sInVzZXJfbmFtZSI6ImN0X2FwcCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSIsInRydXN0Il0sImV4cCI6MTYwNjk4NDM2OSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6ImQ1MThmNTIwLWQ5MDYtNDRhZi05NGU5LTczMDhmZDk0ZTMwYSIsImNsaWVudF9pZCI6ImNsaWVudDIifQ.0JqL2HwNWsWNFqhGzZ3PLoqixwpFIcoqqOUX3cg4Ens"
+            }
+            var arguments = {
+                className:"FileBridge",
+                function:"download",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function fullScreen(){
+            alert("全屏");
+            var options = {
+                "fullScreen":true,
+                "coverNavBarFlag":0
+            }
+            var arguments = {
+                className:"WebViewBridge",
+                params:options,
+                function:"fullScreen",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function smallScreen(){
+            alert("小屏");
+            var options = {
+                "fullScreen":false,
+            }
+            var arguments = {
+                className:"WebViewBridge",
+                params:options,
+                function:"fullScreen",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function tenantContact(){
+            var options = {
+                //不可选择列表,不包含在最后的选中名单中
+                unSelectAbleList:[{"employeeId":"90120"},{"employeeId":"90115","userId":"300282"}],
+                //默认选择列表，不可取消，包含在最后的选中名单中
+                defaultSelectList:[{"employeeId":"90123"},{"employeeId":"90116"}],
+                //默认选择列表，可取消，选中结果包含在最后的选中名单中
+                selectList:[{"employeeId":"90107","name":"佩琦","imageUrl":""}],
+                //限制选择人数，默认不限制
+                limitNum:10
+            }
+            var arguments = {
+                className:"ContactBridge",
+                function:"openTenantContact",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments))
+        }
+
+        function userDetail(){
+            var options = {
+                employeeNum:"7915",
+                tenantId:"33"
+            }
+            var arguments = {
+                className:"BaseBridge",
+                function:"gotoUserDetail",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments))
+        }
+
+        function startConversation(){
+            alert("startConversation");
+            var options = {
+                targetId:"270381",
+                targetName:"潘旭"
+            }
+            var arguments = {
+                className:"IMBridge",
+                function:"startConversation",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments))
+        }
+
+        function setScreenToLandscap(){
+            alert("setScreenToLandscap");
+            var options = {
+                orientation:"landscape"
+            }
+            var arguments = {
+                className:"BaseBridge",
+                function:"setOrientation",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments))
+        }
+
+        function setScreenToPortrait(){
+            alert("setScreenToPortrait");
+            var options = {
+                orientation:"portrait"
+            }
+            var arguments = {
+                className:"BaseBridge",
+                function:"setOrientation",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments))
+        }
+
+        function checkAppExist(){
+            alert("checkAppExist");
+            var options = {
+                bundleId:"com.hand_china.hrms"
+            }
+            var arguments = {
+                className:"BaseBridge",
+                function:"checkAppExist",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments))
+        }
+
+        function imageBase64(){
+            alert("image2Base64");
+            var options = {
+                filePath:"hippiusFile:///storage/emulated/0/Hippius2/Test_1587632986392.jpg",
+                quality:50
+            }
+            var arguments = {
+                className:"FileBridge",
+                function:"image2Base64",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+
+        function viewPictures(){
+            alert("start view picture");
+            var options = {
+             images:["hippiusFile:///data/user/0/com.hand.hippiusRC/cache/tmp_IMG_20191108_2318316431529547191532617.jpg",
+             "hippiusFile:///data/user/0/com.hand.hippiusRC/cache/tmp_img-696ecd4d3fa901443f80a263de739bfe7707281998476009344.jpg",
+             "hippiusFile:///data/user/0/com.hand.hippiusRC/cache/tmp_mmexport15730430384318773968933837498023.jpg"],
+             currentIndex:1
+            }
+            var arguments = {
+                className:"FileBridge",
+                function:"browseImage",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+        var onBackResult = function(message){
+            console.log("111111111111"+message);
+        }
+
+        function startApplication(){
+            alert("startApplication");
+
+            var options = {
+                menuCode:"pxdemo"
+            }
+            var arguments = {
+                className:"BaseBridge",
+                function:"startApplication",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function businessCard(){
+            alert("businessCard");
+            var arguments = {
+                className:"BusinessCardBridge",
+                function:"choosePicture",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+        function mulGallery(){
+            var arguments = {
+                className:"ImagePickerBridge",
+                function:"getPictures",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+
+        function h5login(){
+            var options = {
+                tokenResult:{
+                        "access_token":"9d9929dd-b1c6-44b9-9421-17f078f1ea8f",
+                        "token_type":"bearer",
+                        "refresh_token":"53f8ee69-85fd-4a47-af75-19f63accd5e9",
+                        "expires_in":96750566,
+                        "scope":"default"
+                    }
+            }
+            var arguments = {
+                className:"LoginBridge",
+                function:"start",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+<!-- onSuccess:{"countryCode":"+86"} -->
+<!--请按照对应json格式取值-->
+         function selectCode(){
+            alert("selectCode");
+            var arguments = {
+                className:"BaseBridge",
+                function:"selectCountryCode",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function logout(){
+            var arguments = {
+                className:"LoginBridge",
+                function:"logout",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+
+<!--        选择日期插件开始   -->
+
+         function selectDateTime(){
+            alert("selectDateTime");
+
+            var options = {endTime: "2100-12-31 23:59:59",
+                            selectTime: "2019-12-20 12:26:00",
+                            startTime: "2019-12-20 00:00:00",
+                            timeEnable: true
+                }
+
+            var arguments = {
+                className:"DateTimePicker",
+                function:"show",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function goLink(){
+            var options = {
+                coverNavBarFlag:0,
+                title:"百度一下",
+                url:"http://www.baidu.com"
+            }
+            var arguments = {
+                className:"WebViewBridge",
+                function:"loadWebView",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+        function getDeviceInfo(){
+            alert("getDeviceInfo");
+            var arguments = {
+                className:"DeviceBridge",
+                function:"getDeviceInfo",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function startRecorderRecognize(){
+            alert("startRecorderRecognize");
+            var arguments = {
+                className:"VoiceToTextBridge",
+                function:"startRecorderRecognize",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function stopRecorderRecognize(){
+            alert("stopRecorderRecognize");
+        }
+
+        function copy(){
+            var options = {
+                text:"hahahaha"
+            }
+            var arguments = {
+                className:"Clipboard",
+                function:"copy",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function paste(){
+            var arguments = {
+                className:"Clipboard",
+                function:"paste",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function searchContact(){
+            var options = {
+                filter:"爹"
+            }
+            var arguments = {
+                className:"ContactBridge",
+                function:"search",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function saveContact(){
+            var options = {
+                name:"xxx",
+                familyName:"xxxxxxx",
+                phone:"18221730009",
+                company:"汉得信息的公司",
+                email:""
+            }
+            var arguments = {
+                className:"ContactBridge",
+                function:"save",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function shareRichMsg(){
+            var options = {
+                 "title":"xxx",
+                 "content":"xxxxx",
+                 "url":"https://www.baidu.com",
+                 "imgUrl":"xxxxx"
+            }
+            var arguments = {
+                className:"IMBridge",
+                function:"shareRichMessage",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function alert2(){
+            var options = {
+                message:"123",
+                title:"titttt",
+                buttonName:"确定"
+            }
+            var arguments = {
+                className:"Notification",
+                function:"alert",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+        function confirm(){
+            var options = {
+                message:"123",
+                title:"titttt",
+                buttonName:["确定","取消","ceshi"]
+            }
+            var params = {
+                className:"Notification",
+                function:"confirm",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(params));
+        }
+        function prompt(){
+            var options = {
+                message:"123",
+                title:"titttt",
+                defaultText:"sdfasfsa",
+                buttonName:["确定","取消","ceshi"]
+            }
+            var arguments = {
+                className:"Notification",
+                function:"prompt",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function beep(){
+            var options = {
+                count:1
+            }
+            var arguments = {
+                className:"Notification",
+                function:"beep",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function toastCenter(){
+            var options = {
+                message:"11111",
+                duration:"short",
+                position:"bottom"
+            }
+            var arguments = {
+                className:"ToastBridge",
+                function:"show",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function setTabBarInVisible(){
+            var options = {
+                show:false
+            }
+            var arguments = {
+                className:"BaseBridge",
+                function:"setTabBarVisible",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function setTabBarVisible(){
+            var options = {
+                show:true
+            }
+            var arguments = {
+                className:"BaseBridge",
+                function:"setTabBarVisible",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function setBadgeCount(){
+            var options = {
+                index:2,
+                count:4
+            }
+            var arguments = {
+                className:"BaseBridge",
+                function:"setTabMessageCount",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function shareImage(){
+            var options = {
+                path:"hippiusFile:///data/data/com.hand.hippiusRC/cache/tmp_group_qrcode_25747615611547603040.jpg"
+            }
+            var arguments = {
+                className:"FileBridge",
+                function:"shareImage",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function actionSheet(){
+            var options = {
+                buttonLabels:['手工录入','名片扫描','从手机通讯录导入'],
+                addCancelButtonWithLabel:'取消',
+                androidEnableCancelButton:true,
+                title:'新建联系人'
+            }
+            var arguments = {
+                className:"ActionSheetBridge",
+                function:"show",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+        <!--"id":"1041","name":"潘旭、"-->
+        function createGroup0(){
+            var options = {
+                isNeedSelect:"false",
+                ownerUserId:"49",
+                userList:[{userId:"48"},{userId:"15"}]
+            }
+            var arguments = {
+                className:"IMBridge",
+                function:"startGroupConversation",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function startGroup0(){
+            var options = {
+                groupId:"1041",
+                groupName:"潘旭、"
+            }
+            var arguments = {
+                className:"IMBridge",
+                function:"startGroupConversation",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function camera(){
+            var options = {
+                "allowEdit": false,//拍完照后是否允许裁剪
+                "editShape":1,//当allowEdit为true时，希望获取到的形状0圆形，1矩形, 2正方形
+                "allowDoodle":false,
+                "saveToPhotoAlbum":true,
+                "persistentStorage":false
+            }
+            var arguments = {
+                className:"CameraBridge",
+                function:"takePicture",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function editImage(path){
+            var options = {
+                "filePath":path
+            }
+            var arguments = {
+                className:"DoodleBridge",
+                function:"edit",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        var onCameraSuccess = function(filePath){
+          editImage(filePath);
+        }
+
+        function cameraForEdit(){
+            var options = {
+                "allowEdit": false,//拍完照后是否允许裁剪
+                "editShape":1//当allowEdit为true时，希望获取到的形状0圆形，1矩形, 2正方形
+            }
+            var arguments = {
+                className:"CameraBridge",
+                function:"takePicture",
+                params:options,
+                successCallBack:"onCameraSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function listCamera(){
+            var options = {
+                "fileNamePre":"Test",//自定义生成的照片文件名的前缀最终生成图片的命名为 "Test_"+时间戳
+                "saveDir":"Hippius2"//图片存储的文件夹名称，指定该名称后，文件将存储在根目录的该文件夹下，不传则将文件存储在app的内部存储空间，建议不传
+            }
+            var arguments = {
+                className:"ADCameraBridge",
+                function:"takePictures",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function fileSelect(){
+            var arguments = {
+                className:"FileBridge",
+                function:"fileSelect",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function setValue(){
+            var options = {
+                "key":"name",
+                "value":"panxu"
+            }
+            var arguments = {
+                className:"NativeStorageBridge",
+                function:"set",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function getValue(){
+            var options = {
+                "key":"name"
+            }
+            var arguments = {
+                className:"NativeStorageBridge",
+                function:"get",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function setBackResult(){
+            var options = {
+                "result":"这是返回值"
+            }
+            var arguments = {
+                className:"BaseBridge",
+                function:"setBackResult",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function setNativeTitle(){
+            var options = {
+                "title":"新标题1"
+            }
+            var arguments = {
+                className:"BaseBridge",
+                function:"setNativeTitle",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function removeTenantListener(){
+            var arguments = {
+                className:"BaseBridge",
+                function:"removeTenantChangeListener",
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function loadFromBrowser(){
+            var options = {
+                "url":"https://www.baidu.com",
+                "systemDefault":false
+            }
+            var arguments = {
+                className:"BrowserBridge",
+                function:"loadUrl",
+                params:options,
+                successCallBack:"onSuccess",
+                failCallBack:"onError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+    </script>
+</head>
+
+<body>
+<button onclick="loadFromBrowser()">浏览器打开</button>
+<button onclick="fullScreen()">全屏</button>
+<br>
+<button onclick="startApplication()">子应用间跳转</button>
+<br>
+<button onclick="removeTenantListener()">移除租户监听</button>
+<br>
+<button onclick="text2Speech()">文字转语音</button>
+<br>
+<button onclick="setNativeTitle()">设置导航栏标题</button>
+<br>
+<textarea id="abc"></textarea>
+<button onclick="setBackResult()">携带参数返回上一个子应用</button>
+<a href="http://101.132.161.42/fileUpload/schedule1www.zip">下载文件</a><br>
+<a href="Hippius://t=submenu">超链接跳转子应用</a>
+<br>
+<button onclick="setValue()">设置值</button>
+<button onclick="getValue()">获取值</button>
+<button onclick="fileSelect()">文件选择</button>
+
+<button onclick="listCamera()">相机连拍</button>
+<button onclick="cameraForEdit()">图片编辑</button>
+<br>
+<button onclick="smallScreen()">小屏</button>
+
+<button onclick="camera()">调用相机</button>
+<br>
+
+<button onclick="startGroup0()">发起群聊</button>
+<br><br>
+<button onclick="createGroup0()">创建群组</button>
+<br><br>
+<input type="number" placeholder="请输入银行密码">
+<a href="https://uatimage.galc.com.cn:9002/SunECMDM/servlet/getFile?5VroJVmANCMHMML6mNDCZxDUc2FAE58jQHVkmVT7cuZ0Vz1M14dIG4Ejzp+72Yuvlo+DBzrKspybCPqLYrKLH6OBPDMfsyt2MqBAQz/tAPPG6PCOMXAv4wX++Enwwai3NzqONwMEUPYg9rvqKSLChBvtb2S0XXHDWrBEDEJLYO7P2R35kY+CjhgiWIZcj46eO8W/+nSoQvencfm79tRbd9S1C9idmys8mr0lo25neFkprf7a3fXejL/slW8OjOKuuGIOFzIJggSx8Yn2BzfAtWwjkDrm8iB6">apk下载</a>
+<button onclick="closeWebView()">关闭窗口</button>
+<br>
+<select>
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="opel">Opel</option>
+    <option value="audi">Audi</option>
+</select>
+<button onclick="locationJS()">js定位</button>
+<br><br>
+<button onclick="actionSheet()">ActionSheet</button>
+<br><br>
+<button onclick="base64ToImage()">base64转化为图片</button>
+<button onclick="shareImage()">分享图片</button>
+<br><br>
+<button onclick="setBadgeCount()">设置消息数</button>
+<br><br>
+<button onclick="setTabBarInVisible()">隐藏tab</button>
+<br><br>
+<button onclick="setTabBarVisible()">显示tab</button>
+<br><br>
+<button onclick="toastCenter()">toast</button>
+<br><br>
+<button onclick="beep()">beep</button>
+<br><br>
+<button onclick="alert2()">alert</button>
+<br><br>
+<button onclick="confirm()">confirm</button>
+<br><br>
+<button onclick="prompt()">prompt</button>
+<br><br>
+<button onclick="shareRichMsg()">分享富文本</button>
+<br>
+<button onclick="saveContact()">保存联系人</button>
+<button onclick="searchContact()">查找联系人</button>
+<button onclick="copy()">复制</button>
+<br>
+<button onclick="paste()">粘贴</button>
+<br>
+<button onclick="startRecorderRecognize()">开始录音并识别</button>
+<br>
+<button onclick="stopRecorderRecognize()">停止录音识别</button>
+<button onclick="getDeviceInfo()">获取设备信息</button>
+<br>
+<button onclick="goLink()">跳至外链</button>
+<br>
+<input type="file"/><br>
+<button onclick="getBaseInfo()">获取基础信息</button>
+<br>
+<button onclick="viewPictures()">批量浏览图片</button>
+<br>
+<button onclick="photos()">调用相册</button>
+<br>
+<button onclick="scan()">扫描二维码/条形码</button>
+<br>
+<button onclick="openNativeContact()">打开联系人</button>
+<br>
+<button onclick="previewOffice()">文件预览</button>
+<button onclick="share()">社会化分享</button>
+<button onclick="getLocation()">定位</button>
+<button onclick="getLocation2()">定位2</button>
+<button onclick="getSerLocation()">连续定位</button>
+<button onclick="stopSerLocation()">停止连续定位</button>
+<br>
+<button onclick="uploadFile()">文件上传</button>
+<button onclick="downloadFile()">文件下载</button>
+<br>
+<button onclick="tenantContact()">企业通讯录</button>
+<a href="http://www.baidu.com">baidu</a>
+<a href="hippius://?t=jg&gid=xxxxxxx">HIPPIUS</a><br>
+<button onclick="userDetail()">用户详情</button>
+<br>
+<button onclick="startConversation()">发起会话</button>
+<button onclick="setScreenToLandscap()">切换至横屏</button>
+<button onclick="setScreenToPortrait()">切换至竖屏</button>
+<button onclick="setScreenToAuto()">切换至自动旋转</button>
+<br>
+<!--高德相关文档 https://lbs.amap.com/api/amap-mobile/summary -->
+<a href="androidamap://navi?sourceApplication=appname&amp;poiname=fangheng&amp;lat=36.547901&amp;lon=104.258354&amp;dev=1&amp;style=2">高德导航</a>
+<a href="amapuri://route/plan/?sid=&slat=39.92848272&slon=116.39560823&sname=A&did=&dlat=39.98848272&dlon=116.47560823&dname=B&dev=0&t=0">高德路径规划</a>
+<a href="androidamap://viewReGeo?sourceApplication=softname&lat=39.92&lon=116.46&dev=1">高德逆地理编码</a>
+<!--百度相关文档 http://lbsyun.baidu.com/index.php?title=uri/api/android-->
+<a href="bdapp://map/marker?location=40.05740665572,116.2964407172&title=Marker&content=makeamarker&traffic=on&src=andr.baidu.openAPIdemo">百度自定义打点</a>
+<a href="bdapp://map/geocoder?src=andr.baidu.openAPIdemo&address=北京市海淀区上地信息路9号奎科科技大厦">百度地址解析</a>
+<!---->
+<a href="mqqwpa://im/chat?chat_type=wpa&uin=12312123">发起qq聊天</a>
+<br>
+<button onclick="checkAppExist()">检查某个app是否存在</button>
+<br>
+<img src="content://media/external/images/media/6010" width="200" height="100"/>
+<br>
+<button onclick="imageBase64()">图片转为base64格式</button>
+<br>
+
+<button onclick="businessCard()">名片识别</button>
+<br>
+<button onclick="mulGallery()">从相册中多选图片</button>
+<br>
+<button onclick="logout()">子应用退出至登录页</button>
+<button onclick="h5login()">子应用登录</button>
+<button onclick="selectCode()">区号选择</button>
+<button onclick="selectDateTime()">时间日期选择</button>
+</body>
+</html>

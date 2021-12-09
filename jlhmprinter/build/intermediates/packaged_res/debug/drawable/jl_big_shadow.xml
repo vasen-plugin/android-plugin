@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--边-->
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="3px"
+                android:left="3px"
+                android:right="3px"
+                android:top="3px" />
+
+            <solid android:color="#00EEEEEE" />
+
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="3px"
+                android:left="3px"
+                android:right="3px"
+                android:top="3px" />
+
+            <solid android:color="#10EEEEEE" />
+
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="3px"
+                android:left="3px"
+                android:right="3px"
+                android:top="3px" />
+
+            <solid android:color="#10EEEEEE" />
+
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="3px"
+                android:left="3px"
+                android:right="3px"
+                android:top="3px" />
+
+            <solid android:color="#30EEEEEE" />
+
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="3px"
+                android:left="3px"
+                android:right="3px"
+                android:top="3px" />
+
+            <solid android:color="#50EEEEEE" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+
+    <!--中心背景 -->
+    <item>
+        <shape
+            android:shape="rectangle"
+            android:useLevel="false">
+            <!--实心 -->
+            <solid android:color="?attr/second_bg_color" />
+            <corners android:radius="4dp" />
+            <size android:width="31dp"
+                android:height="31dp"/>
+
+        </shape>
+    </item>
+
+</layer-list>

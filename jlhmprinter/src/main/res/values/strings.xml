@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="printer_select_device">选择打印机</string>
+    <string name="bt_open">蓝牙开启中...</string>
+    <string name="bt_connect">设备连接中...</string>
+</resources>

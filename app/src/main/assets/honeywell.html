@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>honeywell demo</title>
+    <script type="application/javascript">
+        var onEnableBTSuccess = function(message){
+            console.log(message);
+        }
+
+        var onEnableBTError = function(message){
+            console.log(message);
+        }
+
+        function enableBT(){
+            var arguments = {
+                className:"HoneyRFIDReader",
+                function:"enableBT",
+                successCallBack:"onEnableBTSuccess",
+                failCallBack:"onEnableBTSuccess"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+       // <!------------------------------------------>
+        var onConnectSuccess = function(message){
+            console.log(message);
+        }
+
+        var onConnectError = function(message){
+            console.log(message);
+        }
+
+        function connectByBT(){
+            var arguments = {
+                className:"HoneyRFIDReader",
+                function:"connectByBT",
+                successCallBack:"onConnectSuccess",
+                failCallBack:"onConnectError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+       // <!------------------------------------------>
+        //读取结果通过该处返回
+        var onDisconnectSuccess = function(message){
+            console.log(message);
+        }
+
+        var onDisconnectError = function(message){
+            console.log(message);
+        }
+
+        function disconnect(){
+            var arguments = {
+                className:"HoneyRFIDReader",
+                function:"disconnect",
+                successCallBack:"onDisconnectSuccess",
+                failCallBack:"onDisconnectError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+        //<!------------------------------------------>
+
+        var onReadSuccess = function(message){
+           // 返回结果样例 "{"code":"1","type":"data","result":["E28011700000020B04802DD2","E28011700000020B048049E2"]}"
+           // 当设备所在空间存在多个标签时，可能会返回多次，前端要做一下去重
+            console.log(message);
+            //stopRead();
+        }
+
+        var onReadError = function(message){
+            console.log(message);
+        }
+
+        var options = {
+            //fire为true会直接开始读取，为false时等待用户触发物理设备握柄上的按键,缺省为true
+            "fire":"false"
+        }
+
+        function startRead(){
+            var arguments = {
+                className:"HoneyRFIDReader",
+                function:"startRead",
+                params:options,
+                successCallBack:"onReadSuccess",
+                failCallBack:"onReadError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        //<!------------------------------------------>
+
+
+        //<!------------------------------------------>
+    </script>
+</head>
+<body>
+<button onclick="enableBT()">打开手机蓝牙</button>
+<br><br>
+<button onclick="connectByBT()">通过蓝牙连接设备</button>
+<br><br>
+<button onclick="disconnect()">断开与设备的连接</button>
+<br><br>
+<button onclick="startRead()">读取数据</button>
+</body>
+</html>

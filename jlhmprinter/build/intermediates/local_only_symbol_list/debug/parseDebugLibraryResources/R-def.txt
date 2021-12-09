@@ -1,0 +1,20 @@
+R_DEF: Internal format may change without notice
+local
+drawable jl_big_shadow
+drawable jl_logo
+id activity_bt
+id header_bar
+id iv_image
+id iv_image2
+id rcv_device
+id status_bar_view
+id swipe_refresh
+id tv_address
+id tv_name
+id tv_search_tip
+layout actity_test
+layout activity_layout_bt_list
+layout item_bt_device
+string bt_connect
+string bt_open
+string printer_select_device

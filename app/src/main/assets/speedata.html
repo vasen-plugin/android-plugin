@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>honeywell demo</title>
+    <script type="application/javascript">
+
+        var onInitDevSuccess = function(message){
+            console.log(message);
+        }
+
+        var onInitDevError = function(message){
+            console.log()
+        }
+
+         var options = {
+            freqRegion:1,//设置频率区域,取值可以为0/1/2  0（840_845）, 1（920_925）,2（902_928）缺省为1。
+            antennaPower:30,//设置天线功率,取值0到30  缺省为30
+        }
+
+        function init(){
+            var arguments = {
+                className:"SpeedDataRFIDReader",
+                function:"init",
+                params:"options",
+                successCallBack:"onInitDevSuccess",
+                failCallBack:"onInitDevError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        var onScanSuccess = function(message){
+            console.log(message);
+        }
+
+        var onScanError = function(message){
+            console.log(message);
+        }
+
+        var optionsStart = {
+            needSound:true,//设置是否在扫描后开启音效
+            onceScan:false
+        }
+
+        function startScan(){
+            var arguments = {
+                className:"SpeedDataRFIDReader",
+                function:"startScan",
+                params:optionsStart,
+                successCallBack:"onScanSuccess",
+                failCallBack:"onScanError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        var onStopScanSuccess = function(message){
+            console.log(message);
+        }
+
+        var onStopScanError = function(message){
+            console.log(message);
+        }
+
+        function stopScan(){
+            var arguments = {
+                className:"SpeedDataRFIDReader",
+                function:"stopScan",
+                successCallBack:"onStopScanSuccess",
+                failCallBack:"onStopScanError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+
+        var onOpenSoundSuccess = function(message){
+            console.log(message);
+        }
+
+        var onOpenSoundError = function(message){
+            console.log(message);
+        }
+
+        function openSound(){
+            var arguments = {
+                className:"SpeedDataRFIDReader",
+                function:"openSound",
+                successCallBack:"onOpenSoundSuccess",
+                failCallBack:"onOpenSoundError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        var onCloseSoundSuccess = function(message){
+            console.log(message);
+        }
+
+        var onCloseSoundError = function(message){
+            console.log(message);
+        }
+
+        function closeSound(){
+            var arguments = {
+                className:"SpeedDataRFIDReader",
+                function:"closeSound",
+                successCallBack:"onCloseSoundSuccess",
+                failCallBack:"onCloseSoundError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        var onReleaseSuccess = function(message){
+            console.log(message);
+        }
+
+        var onReleaseError = function(message){
+            console.log(message);
+        }
+
+        function release(){
+            var arguments = {
+                className:"SpeedDataRFIDReader",
+                function:"release",
+                successCallBack:"onReleaseSuccess",
+                failCallBack:"onReleaseError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        var onReceiveSuccess = function(message){
+            console.log(message);
+        }
+        var onReceiveError = function(message){
+            console.log(message);
+        }
+        var options = {
+            needSound:false,//设置是否在扫描后开启音效
+            onceScan:false
+        }
+        function registerReceiver(){
+            var arguments = {
+                className:"SpeedDataRFIDReader",
+                function:"registerReceiver",
+                params:options,
+                successCallBack:"onReleaseSuccess",
+                failCallBack:"onReleaseError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        function unRegisterReceiver(){
+            var arguments = {
+                className:"SpeedDataRFIDReader",
+                function:"unRegisterReceiver",
+                successCallBack:"onReleaseSuccess",
+                failCallBack:"onReleaseError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+    </script>
+</head>
+<body>
+<button onclick="init()">初始化</button>
+<br><br>
+<button onclick="startScan()">寻卡</button>
+<br><br>
+<button onclick="stopScan()">停止寻卡</button>
+<br><br>
+
+<button onclick="registerReceiver()">设置接收器</button>
+<br><br>
+<button onclick="unRegisterReceiver()">移除接收器</button>
+<br><br>
+
+<button onclick="release()">释放资源</button>
+<br><br>
+<button onclick="openSound()">开启音效</button>
+<br><br>
+<button onclick="closeSound()">关闭音效</button>
+<br><br>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:visibility="gone" />
+
+    <com.hand.baselibrary.widget.HeaderBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="模版组件示例" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_30"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:orientation="vertical"
+                android:background="#ffff00">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="基础数据获取"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:text="AccessToken"
+                    android:textColor="@color/black" />
+
+                <com.hand.baselibrary.widget.ExpandableTextView
+                    android:id="@+id/tv_token"
+                    android:layout_below="@+id/iv_app_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:maxCollapsedLines="1"
+                    app:animDuration="200">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@id/expandable_text"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_gray"
+                            android:paddingLeft="@dimen/dp_10"
+                            android:ellipsize="end"
+                            />
+
+                        <ImageButton
+                            android:id="@id/expand_collapse"
+                            android:layout_width="20dp"
+                            android:layout_height="15dp"
+                            android:background="@android:color/transparent"
+                            android:padding="5dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginRight="@dimen/dp_15"
+                            />
+                    </LinearLayout>
+
+                </com.hand.baselibrary.widget.ExpandableTextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:text="UserId"
+                    android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/tv_userId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:textColor="@color/text_gray" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:text="RxBus接收用户信息"
+                    android:textColor="@color/black" />
+                <com.hand.baselibrary.widget.ExpandableTextView
+                    android:id="@+id/tv_userInfo"
+                    android:layout_below="@+id/iv_app_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:maxCollapsedLines="1"
+                    app:animDuration="200">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@id/expandable_text"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_gray"
+                            android:paddingLeft="@dimen/dp_10"
+                            android:ellipsize="end"
+                            />
+
+                        <ImageButton
+                            android:id="@id/expand_collapse"
+                            android:layout_width="20dp"
+                            android:layout_height="15dp"
+                            android:background="@android:color/transparent"
+                            android:padding="5dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginRight="@dimen/dp_15"
+                            />
+                    </LinearLayout>
+
+                </com.hand.baselibrary.widget.ExpandableTextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:text="员工信息"
+                    android:textColor="@color/black" />
+                <com.hand.baselibrary.widget.ExpandableTextView
+                    android:id="@+id/tv_employeeInfo"
+                    android:layout_below="@+id/iv_app_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:maxCollapsedLines="1"
+                    app:animDuration="200">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@id/expandable_text"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_gray"
+                            android:paddingLeft="@dimen/dp_10"
+                            android:ellipsize="end"
+                            />
+
+                        <ImageButton
+                            android:id="@id/expand_collapse"
+                            android:layout_width="20dp"
+                            android:layout_height="15dp"
+                            android:background="@android:color/transparent"
+                            android:padding="5dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginRight="@dimen/dp_15"
+                            />
+                    </LinearLayout>
+
+                </com.hand.baselibrary.widget.ExpandableTextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp_10">
+
+                <TextView
+                    android:id="@+id/tv_demo_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="配置字符串:"
+                    android:textColor="@color/gray_9b" />
+
+                <TextView
+                    android:id="@+id/tv_str1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:text="待配置字符串1"
+                    android:textColor="@color/main_color" />
+
+                <TextView
+                    android:id="@+id/tv_demo_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:text="配置颜色:"
+                    android:textColor="@color/gray_9b" />
+
+                <View
+                    android:id="@+id/v_color1"
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:background="@color/red2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="配置字符串:"
+                    android:textColor="@color/gray_9b" />
+
+                <TextView
+                    android:id="@+id/tv_str2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:text="待配置字符串2"
+                    android:textColor="@color/main_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:text="配置颜色:"
+                    android:textColor="@color/gray_9b" />
+
+                <View
+                    android:id="@+id/v_color2"
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:background="@color/gray_9b" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background_white"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="配置图片:"
+                    android:textColor="@color/gray_9b" />
+
+                <ImageView
+                    android:id="@+id/iv_img1"
+                    android:layout_width="@dimen/dp_300"
+                    android:layout_height="@dimen/dp_100"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/dp_10"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/demo_img1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CheckBox:(选择显示以下某几个区域)"
+                    android:textColor="@color/gray_9b" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_100"
+                    android:layout_margin="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_area_1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/red2"
+                        android:gravity="center"
+                        android:text="区域1"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/tv_area_2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/text_hint_gray"
+                        android:gravity="center"
+                        android:text="区域2"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/tv_area_3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/main_color"
+                        android:gravity="center"
+                        android:text="区域3"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background_white"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Radio:(选择显示以下某一个区域)"
+                    android:textColor="@color/gray_9b" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_100"
+                    android:layout_margin="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_radio_area_1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/red2"
+                        android:gravity="center"
+                        android:text="区域1"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/tv_radio_area_2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/text_hint_gray"
+                        android:gravity="center"
+                        android:text="区域2"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/tv_radio_area_3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/main_color"
+                        android:gravity="center"
+                        android:text="区域3"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="长文本"
+                    android:textColor="@color/gray_9b" />
+
+                <TextView
+                    android:id="@+id/tv_long_area1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="待配置长文本\n待配置长文本\n待配置长文本\n"
+                    android:textColor="@color/main_color" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

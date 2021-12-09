@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>日历便携打印机插件使用demo</title>
+    <script type="application/javascript">
+        var onEnableBTSuccess = function(message){
+            console.log(message);
+        }
+
+        var onEnableBTError = function(message){
+            console.log(message);
+        }
+
+        function enableBT(){
+            var arguments = {
+                className:"HMPrinter",
+                function:"enableBT",
+                successCallBack:"onEnableBTSuccess",
+                failCallBack:"onEnableBTSuccess"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+        <!------------------------------------------>
+        var onConnectPrinterSuccess = function(message){
+            console.log(message);
+        }
+
+        var onConnectPrinterError = function(message){
+            console.log(message);
+        }
+
+        var options = {
+             //如果确认环境中不会存在多个打印设备，可以设置该值为true，缺省为true
+             autoConnect:false
+        }
+
+        function connectByBT(){
+            var arguments = {
+                className:"HMPrinter",
+                function:"connectByBT",
+                params:options,
+                successCallBack:"onConnectPrinterSuccess",
+                failCallBack:"onConnectPrinterError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+        <!------------------------------------------>
+        var onDisconnectSuccess = function(message){
+            console.log(message);
+        }
+
+        var onDisconnectError = function(message){
+            console.log(message);
+        }
+
+        function disconnect(){
+            var arguments = {
+                className:"HMPrinter",
+                function:"disconnect",
+                successCallBack:"onDisconnectSuccess",
+                failCallBack:"onDisconnectError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+        <!------------------------------------------>
+
+        var onPrintSuccess = function(message){
+            console.log(message);
+        }
+
+        var onPrintError = function(message){
+            console.log(message);
+        }
+
+        var options = {
+            "list":[
+                 {
+                    "type":"SHB_GOODS",
+                    "tuo":"A1",
+                    "supplier":"上海胜华波汽车电器",
+                    "des":"合格",
+                    "date":"20210122",
+                    "sku":"3.1.100",
+                    "name":"连杆",
+                    "picNum":"V3-1212-4",
+                    "batch":"2021012201",
+                    "num":"100",
+                    "qrcode":"419^CGDD20210122^3.10.100^201605101^ V3-1212-41^20160513011^2500000^ITEM201910131"
+                }
+            ]
+        }
+
+        function print(){
+            var arguments = {
+                className:"HMPrinter",
+                function:"print",
+                params:options,
+                successCallBack:"onPrintSuccess",
+                failCallBack:"onPrintError"
+            }
+            HandBridge.postMessage(JSON.stringify(arguments));
+        }
+
+        <!------------------------------------------>
+
+
+    </script>
+</head>
+<body>
+<button onclick="enableBT()">打开手机蓝牙</button>
+<br><br>
+<button onclick="connectByBT()">通过蓝牙连接打印机</button>
+<br><br>
+<button onclick="disconnect()">断开与打印机的连接</button>
+<br><br>
+<button onclick="print()">打印</button>
+</body>
+</html>

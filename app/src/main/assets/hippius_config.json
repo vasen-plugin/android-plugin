@@ -1,0 +1,75 @@
+{
+  "templateType": "eip",
+  "functionHomePageIndex": 4,
+  "function": [
+    {
+      "isPopPage": 0,
+      "pageType": "native",
+      "extra": {
+        "AndroidLibrary": ":application",
+        "AndroidRoute": "/application/appafragment"
+      },
+      "params": {},
+      "version": "0.10.1",
+      "pageCode": "app"
+    },
+    {
+      "isPopPage": 0,
+      "pageType": "native",
+      "extra": {
+        "AndroidLibrary": ":messages",
+        "AndroidRoute": "/message/msgfragment"
+      },
+      "params": {},
+      "version": "0.10.1",
+      "pageCode": "message"
+    },
+    {
+      "isPopPage": 0,
+      "pageType": "native",
+      "extra": {
+        "AndroidLibrary": ":contacts",
+        "AndroidRoute": "/contact/contactfragment"
+      },
+      "params": {},
+      "version": "0.10.1",
+      "pageCode": "contact"
+    },
+    {
+      "isPopPage": 0,
+      "pageType": "native",
+      "extra": {
+        "AndroidLibrary": ":contacts",
+        "AndroidRoute": "/contact/minefragment"
+      },
+      "params": {},
+      "version": "0.10.1",
+      "pageCode": "me"
+    },
+    {
+      "pageType": "online",
+      "params": {
+        "discription": "",
+        "displayName": "桥",
+        "onLineUrl": ""
+      },
+      "extra": {
+        "onlineUrl": "file:///android_asset/vasennfcbridge.html",
+        "coverNavBarFlag": 0
+      },
+      "version": "x.xx.x",
+      "pageCode": "bridge"
+    },
+    {
+      "isPopPage": 0,
+      "pageType": "native",
+      "extra": {
+        "AndroidLibrary": ":hippiusmoduledemo",
+        "AndroidRoute": "/hippiusmoduledemo/demofragment"
+      },
+      "params": {},
+      "version": "0.10.1",
+      "pageCode": "hippiusmoduledemo"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>demo bridge test</title>
+    <script type="application/javascript">
+        var onOpenNFCSuccess = function(message){
+            console.log(message);
+        }
+        var onOpenNFCError = function(message){
+            console.log(message);
+        }
+        function openNFC(){
+            var openArgs = {
+                className:"VasenNfcBridge",
+                function:"openNFC",
+                successCallBack:"onOpenNFCSuccess",
+                failCallBack:"onOpenNFCError"
+            }
+            HandBridge.postMessage(JSON.stringify(openArgs));
+        }
+        var onReadNFCSuccess = function(message){
+            console.log(message);
+        }
+        var onReadNFCError = function(message){
+            console.log(message);
+        }
+        function readNFC(){
+            var readArgs = {
+                className:"VasenNfcBridge",
+                function:"readFromNFC",
+                successCallBack:"onReadNFCSuccess",
+                failCallBack:"onReadNFCError"
+            }
+            HandBridge.postMessage(JSON.stringify(readArgs));
+        }
+        var onWriteNFCSuccess = function(message){
+            console.log(message);
+        }
+        var onWriteNFCError = function(message){
+            console.log(message);
+        }
+        function writeNFC(){
+            let materialID=document.getElementById("in").value;
+            let options={
+            "materialID": materialID
+            }
+            var writeArgs = {
+                className:"VasenNfcBridge",
+                function:"writeIntoNFC",
+                params:options,
+                successCallBack:"onWriteNFCSuccess",
+                failCallBack:"onWriteNFCError"
+            }
+            HandBridge.postMessage(JSON.stringify(writeArgs));
+        }
+    </script>
+</head>
+<body>
+<button onclick="openNFC()">开启nfc</button>
+<button onclick="readNFC()">读取nfc数据</button>
+<input type="text" id="in" value="">
+<button onclick="writeNFC()">写入数据至nfc</button>
+</body>
+</html>

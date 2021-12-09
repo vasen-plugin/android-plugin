@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "545350651932",
+    "firebase_url": "https://push-77ed8.firebaseio.com",
+    "project_id": "push-77ed8",
+    "storage_bucket": "push-77ed8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545350651932:android:fa8fff3c939225cd5ecfd9",
+        "android_client_info": {
+          "package_name": "com.hand.hippius"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545350651932-hpdmq9s9tm72r76o68ign645pqh4brqj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQPmNX7PjWe-VKButVv5eWI0ZrNAX317c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545350651932-hpdmq9s9tm72r76o68ign645pqh4brqj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

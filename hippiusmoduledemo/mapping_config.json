@@ -1,0 +1,53 @@
+{
+  "pageCode":"HippiusDemo",
+  "files":[
+    {
+      "keyRoute": "params.demo_img_1",
+      "targetPath": "hippiusmoduledemo/src/main/res/drawable-xxhdpi/demo_img1.png"
+    }
+  ],
+  "keyValues":[
+    {
+      "keyRoute": "params.hippiusmoduledemo_str1",
+      "type": "string",
+      "default":null,
+      "targetKey": "hippiusmoduledemo_str1"
+    },
+    {
+      "keyRoute": "params.hippiusmoduledemo_str2",
+      "type": "string",
+      "default":null,
+      "targetKey": "hippiusmoduledemo_str2"
+    },
+    {
+      "keyRoute": "params.hippiusmoduledemo_color1",
+      "type": "string",
+      "default":"#FFF",
+      "targetKey": "hippiusmoduledemo_color1"
+    },
+    {
+      "keyRoute": "params.hippiusmoduledemo_color2",
+      "type": "string",
+      "default":"#000",
+      "targetKey": "hippiusmoduledemo_color2"
+    },
+    {
+      "keyRoute": "params.hippiusmoduledemo_checkbox_area",
+      "type": "JSONArray",
+      "default":null,
+      "targetKey": "hippiusmoduledemo_checkbox_area"
+    },
+    {
+      "keyRoute": "params.hippiusmoduledemo_radio_area",
+      "type": "string",
+      "default":null,
+      "targetKey": "hippiusmoduledemo_radio_area"
+    },
+    {
+      "keyRoute": "params.hippiusmoduledemo_textarea1",
+      "type": "string",
+      "default":null,
+      "targetKey": "hippiusmoduledemo_textarea1"
+    }
+  ]
+}

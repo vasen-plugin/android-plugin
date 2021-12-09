@@ -1,0 +1,49 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from:"config.gradle"
+apply from:"env_config.gradle"
+
+buildscript {
+    
+    repositories {
+        google()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        jcenter()
+        mavenCentral()
+        maven {url mavenRepository}
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.3'
+
+        classpath 'com.jakewharton:butterknife-gradle-plugin:9.0.0'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
+        classpath 'com.google.gms:google-services:4.2.0'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        //if("Y" == rootProject.extensions.extraProperties.get("enableIntune")) {
+            classpath "org.javassist:javassist:3.22.0-GA"
+            classpath files("microintune/GradlePlugin/com.microsoft.intune.mam.build.jar")
+       // }
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        //HMSSDK maven仓库
+        maven {url 'http://developer.huawei.com/repo/'}
+        maven {url '/Users/Shared/react_native/android2'}
+        maven {url mavenRepository}
+//        maven {url "$rootDir/../../node_modules/react-native/android"}  //Oliver's
+
+    }
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
